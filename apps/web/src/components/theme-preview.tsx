@@ -168,12 +168,30 @@ function Nav({ scrolled, cartCount, onCartOpen, onSearchOpen }: NavProps) {
   );
 }
 
-/* ─── APP ─── */
+type ThemeProduct = {
+  id: number;
+  name: string;
+  theme: string;
+  price: number;
+  originalPrice?: number;
+  tagline: string;
+  description: string;
+  fit: string;
+  fitNote: string;
+  badge: string | null;
+  badgeReason: string | null;
+  stock: number;
+  sizes: string[];
+  fabric: string;
+  image: string;
+};
+type CartItem = { product: ThemeProduct; size: string; qty: number };
+
 export default function ThemeApp() {
   const [scrolled, setScrolled] = useState(false);
   const [filter, setFilter] = useState("All");
-  const [selectedProduct, setSelectedProduct] = useState<any | null>(null);
-  const [cart, setCart] = useState<any[]>([]);
+  const [selectedProduct, setSelectedProduct] = useState<ThemeProduct | null>(null);
+  const [cart, setCart] = useState<CartItem[]>([]);
   const [showCart, setShowCart] = useState(false);
   const [showCheckout, setShowCheckout] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
@@ -185,7 +203,7 @@ export default function ThemeApp() {
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
-  const addToCart = useCallback((product: any, size: string) => {
+  const addToCart = useCallback((product: ThemeProduct, size: string) => {
     setCart((prev) => {
       const existing = prev.findIndex((i) => i.product.id === product.id && i.size === size);
       if (existing >= 0) {

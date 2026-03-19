@@ -1,5 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 import React from "react";
-import { Instagram, Star, Shirt, ShieldCheck, Ruler, Gift, Truck, Package, RotateCcw, Lock, Home, Compass, ShoppingBag, User } from "lucide-react";
+import { Instagram, Star, Home, Compass, ShoppingBag, User } from "lucide-react";
 import { BrandLogo } from "@/components/brand/logo";
 
 const C = {
@@ -17,7 +18,7 @@ const C = {
   duskViolet: "#6B4C8A",
 } as const;
 
-export function BrandAssurance({ ASSURANCE }: { ASSURANCE: any[] }) {
+export function BrandAssurance({ ASSURANCE }: { ASSURANCE: { icon: React.ElementType; title: string; text: string; }[] }) {
   return (
     <section
       className="py-12 px-4 max-w-6xl mx-auto font-b"
@@ -55,7 +56,7 @@ export function BrandAssurance({ ASSURANCE }: { ASSURANCE: any[] }) {
   );
 }
 
-export function SocialProof({ UGC }: { UGC: any[] }) {
+export function SocialProof({ UGC }: { UGC: { name: string; product: string; quote: string; img: string; }[] }) {
   return (
     <section
       className="py-16 px-4 max-w-6xl mx-auto font-b"
@@ -104,7 +105,7 @@ export function SocialProof({ UGC }: { UGC: any[] }) {
                 ))}
               </div>
               <p className="font-bm text-sm mb-1.5" style={{ color: C.papyrus }}>
-                "{u.quote}"
+                &ldquo;{u.quote}&rdquo;
               </p>
               <p className="text-[11px] uppercase tracking-widest" style={{ color: C.clayEarth }}>
                 {u.name} / {u.product}
@@ -117,7 +118,7 @@ export function SocialProof({ UGC }: { UGC: any[] }) {
   );
 }
 
-export function Footer({ TRUST }: { TRUST: any[] }) {
+export function Footer({ TRUST }: { TRUST: { icon: React.ElementType; label: string; }[] }) {
   return (
     <footer
       className="pt-16 pb-28 md:pb-10 px-4 sm:px-6 font-b"

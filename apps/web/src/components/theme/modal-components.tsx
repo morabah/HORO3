@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState, useEffect, useMemo } from "react";
 import { X, Shirt, Ruler, Truck, Package, RotateCcw, Minus, Plus, Lock, ArrowLeft, Check, CreditCard, Search } from "lucide-react";
 
@@ -574,7 +576,7 @@ export function Checkout({ cart, onClose, onComplete }: CheckoutProps) {
           {step === 1 ? (
             <div className="space-y-3 anim-in">
               <p className="text-xs mb-2" style={{ color: C.clayEarth }}>
-                Choose how you'd like to pay.
+                Choose how you&apos;d like to pay.
               </p>
               {[
                 {
@@ -746,7 +748,7 @@ export function OrderConfirmation({ onClose }: OrderConfirmationProps) {
           Order placed.
         </h2>
         <p className="text-sm mb-1" style={{ color: C.stone }}>
-          You'll get a WhatsApp confirmation shortly.
+          You&apos;ll get a WhatsApp confirmation shortly.
         </p>
         <p className="text-xs mb-5" style={{ color: C.clayEarth }}>
           You completed this design by choosing it.
@@ -815,7 +817,7 @@ export function SearchModal({ onClose, onProductClick, PRODUCTS }: SearchModalPr
 
         {query && results.length === 0 ? (
           <p className="text-sm text-center py-8" style={{ color: C.clayEarth }}>
-            No designs found for "{query}"
+            No designs found for &quot;{query}&quot;
           </p>
         ) : null}
 

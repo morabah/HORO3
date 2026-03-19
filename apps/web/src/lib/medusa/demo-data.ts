@@ -256,6 +256,7 @@ export const DEMO_PRODUCTS: Product[] = [
    Demo API Router — routes paths to demo data
    ═══════════════════════════════════════════ */
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function demoFetch<T>(path: string, _options?: RequestInit): T | null {
   // GET /store/product-categories?handle=xxx
   if (path.includes("/product-categories")) {

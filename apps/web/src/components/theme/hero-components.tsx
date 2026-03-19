@@ -1,5 +1,7 @@
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState, useEffect, useMemo } from "react";
-import { ArrowRight, MapPin, Moon, Briefcase, Instagram, Star, Shirt, ShieldCheck, Ruler, Gift } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 /* ─── STUB CONSTANTS AND TYPES (Shared) ─── */
 const C = {
