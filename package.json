@@ -1,0 +1,16 @@
+{
+  "name": "horo",
+  "private": true,
+  "workspaces": ["apps/*"],
+  "scripts": {
+    "dev": "npm run dev --workspace=apps/web",
+    "dev:web": "npm run dev --workspace=apps/web",
+    "build": "npm run build --workspace=apps/web",
+    "lint": "npm run lint --workspace=apps/web",
+    "type-check": "npm run type-check --workspace=apps/web",
+    "test": "npm run test --workspace=apps/web"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

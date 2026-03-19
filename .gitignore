@@ -1,0 +1,38 @@
+# Dependencies
+node_modules
+.pnpm-store
+
+# Build
+.next
+out
+dist
+build
+*.tsbuildinfo
+
+# Env and secrets
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# IDE and OS
+.idea
+.vscode
+.DS_Store
+*.log
+npm-debug.log*
+
+# Medusa
+apps/medusa/.env
+apps/medusa/uploads
+
+# Sanity
+apps/web/sanity/.sanity
+
+# Testing
+coverage
+.nyc_output
+
+# Misc
+*.pem
+.vercel

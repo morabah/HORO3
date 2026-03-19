@@ -1,0 +1,182 @@
+@import "../design-system/tokens.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply antialiased;
+  }
+
+
+  body {
+    font-family: var(--font-sans);
+    background-color: rgb(var(--color-warm-linen));
+  }
+
+  ::selection {
+    background: rgb(var(--color-burnt-sienna) / 0.2);
+    color: rgb(var(--color-charcoal));
+  }
+
+  [dir="rtl"] {
+    font-family: var(--font-sans-rtl), system-ui, sans-serif;
+    line-height: var(--leading-normal-arabic, 1.6);
+  }
+}
+
+@layer components {
+  .horo-kicker {
+    @apply text-[11px] font-semibold uppercase tracking-[0.24em] text-burnt-sienna;
+  }
+
+  .horo-section-title {
+    @apply text-xl font-semibold text-charcoal md:text-2xl;
+  }
+
+  .horo-frame-card {
+    @apply relative overflow-hidden border border-sandstone/40 bg-true-white shadow-sm;
+    border-radius: var(--radius-lg);
+  }
+
+  .horo-paper-panel {
+    @apply relative overflow-hidden border border-sandstone/40 bg-true-white shadow-sm;
+    border-radius: var(--radius-lg);
+  }
+
+  .horo-dot-grid {
+    background-image: radial-gradient(rgb(var(--color-sandstone) / 0.36) 1px, transparent 1px);
+    background-size: 18px 18px;
+  }
+
+  .horo-soft-gradient {
+    background-image:
+      radial-gradient(circle at top left, rgb(var(--color-sandstone) / 0.2), transparent 36%),
+      linear-gradient(180deg, rgb(255 255 255 / 0.12), transparent 50%);
+  }
+
+  .horo-quiet-rule {
+    @apply border-t border-sandstone/50;
+  }
+
+  .horo-home-card {
+    border: 1px solid rgb(var(--color-sandstone) / 0.36);
+    border-radius: 28px;
+    background: linear-gradient(180deg, rgb(var(--color-warm-linen) / 0.95), rgb(var(--color-parchment) / 0.30));
+    box-shadow: 0 18px 38px rgb(61 50 41 / 0.08);
+  }
+
+  .horo-home-flat-card {
+    border: 1px solid rgb(var(--color-sandstone) / 0.3);
+    border-radius: 24px;
+    background: rgb(var(--color-warm-linen) / 0.92);
+    box-shadow: 0 12px 28px rgb(61 50 41 / 0.05);
+  }
+
+  .horo-home-chip {
+    @apply inline-flex items-center rounded-full border border-sandstone/40 bg-warm-linen/90 px-3 py-1.5 text-xs font-medium text-deep-umber;
+  }
+
+  .horo-home-quote {
+    border: 1px solid rgb(var(--color-sandstone) / 0.3);
+    border-radius: 24px;
+    background: linear-gradient(180deg, rgb(var(--color-warm-linen) / 0.95), rgb(var(--color-parchment) / 0.25));
+    box-shadow: 0 12px 28px rgb(61 50 41 / 0.05);
+  }
+
+  .horo-home-section {
+    @apply border-t border-sandstone/30 py-16 md:py-24;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33.333%);
+  }
+}
+
+[dir="rtl"] .animate-\[marquee_35s_linear_infinite\] {
+  animation-direction: reverse;
+}
+
+@media (max-width: 767px) {
+  .horo-home-mock-stage {
+    min-height: 420px;
+  }
+
+  .horo-home-mock-stage::before {
+    inset: 24px 20px 104px;
+  }
+
+  .horo-home-shirt {
+    width: 210px;
+    height: 274px;
+  }
+
+  .horo-home-shirt-print {
+    top: 92px;
+    width: 132px;
+    height: 132px;
+  }
+
+  .horo-home-float {
+    max-width: 160px;
+    padding: 12px 14px;
+  }
+
+  .horo-home-float-top {
+    top: 18px;
+    inset-inline-end: 16px;
+  }
+
+  .horo-home-float-bottom {
+    bottom: 16px;
+    inset-inline-start: 16px;
+  }
+}
+
+@layer utilities {
+  .rounded-radius-sm {
+    border-radius: var(--radius-sm);
+  }
+
+  .rounded-radius-md {
+    border-radius: var(--radius-md);
+  }
+
+  .rounded-radius-lg {
+    border-radius: var(--radius-lg);
+  }
+
+  .rounded-radius-xl {
+    border-radius: var(--radius-xl);
+  }
+
+  .rounded-radius-full {
+    border-radius: var(--radius-full);
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}

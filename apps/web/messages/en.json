@@ -1,0 +1,21 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "retry": "Retry"
+  },
+  "nav": {
+    "home": "Home",
+    "shop": "Shop",
+    "themes": "Themes",
+    "artists": "Artists",
+    "gifts": "Gifts",
+    "stories": "Stories",
+    "account": "Account",
+    "cart": "Cart"
+  },
+  "home": {
+    "title": "HORO",
+    "tagline": "Art you wear"
+  }
+}
