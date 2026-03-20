@@ -75,15 +75,16 @@ export function ProductDetail({ product, onClose, onAddToCart }: ProductDetailPr
       onClick={onClose}
     >
       <div
-        className="w-full max-w-2xl max-h-[92vh] overflow-y-auto rounded-t-3xl md:rounded-3xl"
+        className="relative w-full sm:max-w-4xl max-h-[90vh] sm:h-auto overflow-hidden sm:rounded-2xl flex flex-col sm:flex-row anim-slide-up"
         style={{
-          background: C.obsidian,
-          border: "1px solid rgba(255,255,255,0.08)",
-          animation: "slideUp .4s cubic-bezier(.16,1,.3,1)",
+          background: "rgba(248,246,242, 0.1)", // Glass White background
+          backdropFilter: "blur(24px)",
+          border: "1px solid rgba(255,255,255, 0.18)",
+          boxShadow: "0 8px 32px rgba(26,26,26, 0.2)",
         }}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="relative aspect-[4/3] md:aspect-[16/9] overflow-hidden rounded-t-3xl md:rounded-t-3xl">
+        <div className="relative aspect-[4/3] md:aspect-[16/9] sm:aspect-[3/4] sm:w-1/2 overflow-hidden rounded-t-3xl sm:rounded-l-2xl sm:rounded-tr-none">
           <img src={product.image} alt={product.name} className="w-full h-full object-cover object-top" />
           <button
             onClick={onClose}
@@ -141,24 +142,42 @@ export function ProductDetail({ product, onClose, onAddToCart }: ProductDetailPr
             </div>
           </div>
 
-          <p className="text-sm leading-relaxed mb-1" style={{ color: C.stone }}>
+          <p className="text-sm leading-relaxed mb-2" style={{ color: C.stone }}>
             {product.tagline}
           </p>
-          <p className="text-sm leading-relaxed mb-5" style={{ color: C.clayEarth }}>
-            {product.description}
-          </p>
+          <div className="mb-5 space-y-3">
+            <p className="text-sm leading-relaxed" style={{ color: C.papyrus }}>
+              {product.description}
+            </p>
+            <p className="text-sm leading-relaxed text-right font-b" dir="rtl" style={{ color: C.stone }}>
+              {product.descriptionAr}
+            </p>
+          </div>
 
           <div
-            className="flex items-center gap-2 mb-5 px-3 py-2 rounded-xl"
+            className="flex flex-col gap-3 mb-6 p-4 rounded-xl"
             style={{
-              background: "rgba(255,255,255,0.03)",
-              border: "1px solid rgba(255,255,255,0.06)",
+              background: "rgba(227, 239, 245, 0.15)",
+              backdropFilter: "blur(16px)",
+              border: "1px solid rgba(255,255,255,0.1)",
             }}
           >
-            <Shirt className="w-3.5 h-3.5 flex-shrink-0" style={{ color: C.desertSand }} />
-            <span className="text-xs" style={{ color: C.stone }}>
-              {product.fabric}
-            </span>
+            <div className="flex items-center gap-3">
+              <Shirt className="w-4 h-4 flex-shrink-0" style={{ color: C.desertSand }} />
+              <span className="text-xs" style={{ color: C.papyrus }}>{product.fabric}</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <span className="w-4 h-4 flex-shrink-0 flex items-center justify-center text-xs">👨‍🎨</span>
+              <span className="text-xs" style={{ color: C.papyrus }}>Original artwork by {product.artistName}</span>
+            </div>
+             <div className="flex items-center gap-3">
+              <RotateCcw className="w-4 h-4 flex-shrink-0" style={{ color: C.desertSand }} />
+              <span className="text-xs" style={{ color: C.papyrus }}>Free exchange within 14 days</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <Package className="w-4 h-4 flex-shrink-0" style={{ color: C.desertSand }} />
+              <span className="text-xs" style={{ color: C.papyrus }}>COD available nationwide</span>
+            </div>
           </div>
 
           <div className="mb-4">

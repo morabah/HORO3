@@ -1,11 +1,11 @@
 "use client";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState, useMemo } from "react";
 import { Search, ShoppingBag, Truck } from "lucide-react";
 import { BrandLogo } from "@/components/brand/logo";
 import { Hero, Lookbook, ProductGrid } from "./theme/hero-components";
 import { BrandAssurance, SocialProof, Footer, MobileNav } from "./theme/social-components";
 import { ProductDetail, CartDrawer, Checkout, OrderConfirmation, SearchModal } from "./theme/modal-components";
-import { PRODUCTS, LOOKBOOK, UGC, ASSURANCE, TRUST } from "./theme/theme-data";
+import { PRODUCTS, VIBES_CARDS, UGC, ASSURANCE, TRUST } from "./theme/theme-data";
 
 const C = {
   obsidian: "#1A1A1A",
@@ -86,9 +86,12 @@ type NavProps = {
   cartCount: number;
   onCartOpen: () => void;
   onSearchOpen: () => void;
+  VIBES: string[];
+  filter: string;
+  setFilter: React.Dispatch<React.SetStateAction<string>>;
 };
 
-function Nav({ scrolled, cartCount, onCartOpen, onSearchOpen }: NavProps) {
+function Nav({ scrolled, cartCount, onCartOpen, onSearchOpen, VIBES, filter, setFilter }: NavProps) {
   return (
     <header
       className={`fixed w-full z-[100] transition-all duration-500 ${
@@ -113,22 +116,19 @@ function Nav({ scrolled, cartCount, onCartOpen, onSearchOpen }: NavProps) {
           <BrandLogo variant="latin" className="w-[104px] md:w-[120px]" />
         </a>
         <nav className="hidden md:flex items-center gap-6">
-          {["Shop", "Themes", "Size Guide"].map((item) => (
-            <a
-              key={item}
-              href="#"
-              className="text-xs uppercase tracking-widest transition-colors font-bm"
-              style={{ color: C.stone }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.color = C.desertSand;
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.color = C.stone;
-              }}
-            >
-              {item}
-            </a>
-          ))}
+          <div className="flex gap-1 overflow-x-auto pb-4 hide-scrollbar snap-x">
+            {VIBES.map((t) => (
+              <button
+                key={t}
+                onClick={() => setFilter(t)}
+                className={`text-xs uppercase tracking-widest transition-colors font-bm px-3 py-1 rounded-full ${
+                  filter === t ? "bg-white text-obsidian" : "text-stone hover:text-desertSand"
+                }`}
+              >
+                {t}
+              </button>
+            ))}
+          </div>
         </nav>
         <div className="flex items-center gap-2">
           <button
@@ -176,6 +176,8 @@ type ThemeProduct = {
   originalPrice?: number;
   tagline: string;
   description: string;
+  descriptionAr: string;
+  artistName: string;
   fit: string;
   fitNote: string;
   badge: string | null;
@@ -189,7 +191,7 @@ type CartItem = { product: ThemeProduct; size: string; qty: number };
 
 export default function ThemeApp() {
   const [scrolled, setScrolled] = useState(false);
-  const [filter, setFilter] = useState("All");
+  const [filter, setFilter] = useState("Shop by Vibe");
   const [selectedProduct, setSelectedProduct] = useState<ThemeProduct | null>(null);
   const [cart, setCart] = useState<CartItem[]>([]);
   const [showCart, setShowCart] = useState(false);
@@ -227,6 +229,10 @@ export default function ThemeApp() {
     setCart((prev) => prev.filter((_, i) => i !== index));
   }, []);
 
+  const VIBES = ["Shop by Vibe", "Bold & Loud", "Soft & Thoughtful", "Proud & Rooted", "Weird & Wonderful", "Cosmic", "Gift Something Real"];
+
+
+
   const cartCount = cart.reduce((sum, item) => sum + item.qty, 0);
 
   const handleCheckout = () => {
@@ -249,11 +255,14 @@ export default function ThemeApp() {
         cartCount={cartCount}
         onCartOpen={() => setShowCart(true)}
         onSearchOpen={() => setShowSearch(true)}
+        VIBES={VIBES}
+        filter={filter}
+        setFilter={setFilter}
       />
       
       <Hero onShopClick={() => document.getElementById("shop")?.scrollIntoView({ behavior: "smooth" })} />
       <Lookbook
-        LOOKBOOK={LOOKBOOK}
+        VIBES_CARDS={VIBES_CARDS}
         onThemeClick={(theme) => {
           setFilter(theme);
           document.getElementById("shop")?.scrollIntoView({ behavior: "smooth" });

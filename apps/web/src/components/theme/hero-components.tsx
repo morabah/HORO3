@@ -85,9 +85,11 @@ export function Hero({ onShopClick }: HeroProps) {
             onClick={onShopClick}
             className="flex items-center gap-2 px-6 py-3 rounded-full text-sm font-bm uppercase tracking-widest transition-all hover:scale-[1.02]"
             style={{
-              background: C.ember,
+              background: "rgba(248,246,242, 0.25)",
+              backdropFilter: "blur(16px)",
               color: C.white,
-              boxShadow: `0 8px 24px ${C.ember}44`,
+              border: "1px solid rgba(255,255,255, 0.18)",
+              boxShadow: "0 8px 32px rgba(26,26,26, 0.08)",
             }}
           >
             Shop Now <ArrowRight className="w-4 h-4" />
@@ -110,10 +112,10 @@ export function Hero({ onShopClick }: HeroProps) {
 /* ─── LOOKBOOK ─── */
 type LookbookProps = {
   onThemeClick: (theme: any) => void;
-  LOOKBOOK: any[];
+  VIBES_CARDS: any[];
 };
 
-export function Lookbook({ onThemeClick, LOOKBOOK }: LookbookProps) {
+export function Lookbook({ onThemeClick, VIBES_CARDS }: LookbookProps) {
   return (
     <section
       className="py-16 px-4 max-w-6xl mx-auto font-b"
@@ -129,9 +131,8 @@ export function Lookbook({ onThemeClick, LOOKBOOK }: LookbookProps) {
           </h2>
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-3 h-auto md:h-[520px]">
-        {LOOKBOOK.map((cat) => {
-          const Icon = cat.icon;
+      <div className="grid grid-cols-1 md:grid-cols-4 grid-rows-2 gap-3 h-[800px] md:h-[600px]">
+        {VIBES_CARDS.map((cat, i) => {
           return (
             <div
               key={cat.title}
@@ -155,9 +156,10 @@ export function Lookbook({ onThemeClick, LOOKBOOK }: LookbookProps) {
                 <div
                   className="p-4 rounded-xl"
                   style={{
-                    background: "rgba(26,26,26,0.7)",
+                    background: "rgba(248,246,242, 0.25)",
                     backdropFilter: "blur(16px)",
-                    border: "1px solid rgba(255,255,255,0.08)",
+                    border: "1px solid rgba(255,255,255, 0.18)",
+                    boxShadow: "0 8px 32px rgba(26,26,26, 0.08)",
                   }}
                 >
                   <div className="flex justify-between items-center">
@@ -168,12 +170,6 @@ export function Lookbook({ onThemeClick, LOOKBOOK }: LookbookProps) {
                       <p className="text-xs font-bm uppercase tracking-widest mt-0.5" style={{ color: C.stone }}>
                         {cat.desc}
                       </p>
-                    </div>
-                    <div
-                      className="w-10 h-10 rounded-full flex items-center justify-center"
-                      style={{ background: "rgba(255,255,255,0.06)", color: C.papyrus }}
-                    >
-                      <Icon className="w-4 h-4" />
                     </div>
                   </div>
                 </div>
@@ -195,9 +191,9 @@ type ProductGridProps = {
 };
 
 export function ProductGrid({ filter, setFilter, onProductClick, PRODUCTS }: ProductGridProps) {
-  const themes = ["All", "Mood", "Personality", "Career", "Culture", "Emotion"] as const;
+  const themes = ["Shop by Vibe", "Bold & Loud", "Soft & Thoughtful", "Proud & Rooted", "Weird & Wonderful", "Cosmic", "Gift Something Real"] as const;
   const filtered = useMemo(
-    () => (filter === "All" ? PRODUCTS : PRODUCTS.filter((p) => p.theme === filter)),
+    () => (filter === "Shop by Vibe" ? PRODUCTS : PRODUCTS.filter((p) => p.theme === filter)),
     [filter, PRODUCTS]
   );
 
@@ -288,7 +284,12 @@ export function ProductGrid({ filter, setFilter, onProductClick, PRODUCTS }: Pro
               <div className="absolute inset-x-0 bottom-0 p-3 opacity-0 group-hover:opacity-100 transition-opacity">
                 <button
                   className="w-full py-2.5 rounded-xl text-xs font-bm uppercase tracking-widest transition-all"
-                  style={{ background: C.ember, color: C.white }}
+                  style={{
+                    background: "rgba(248,246,242, 0.35)",
+                    backdropFilter: "blur(16px)",
+                    color: C.white,
+                    border: "1px solid rgba(255,255,255, 0.18)",
+                  }}
                 >
                   Quick view
                 </button>

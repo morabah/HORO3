@@ -98,16 +98,24 @@ export function SocialProof({ UGC }: { UGC: { name: string; product: string; quo
               className="absolute inset-0"
               style={{ background: `linear-gradient(to top, ${C.obsidian}, transparent 60%)` }}
             />
-            <div className="absolute bottom-5 left-5 right-5">
+            <div 
+              className="absolute bottom-4 left-4 right-4 p-4 rounded-xl"
+              style={{
+                background: "rgba(248,246,242, 0.25)",
+                backdropFilter: "blur(16px)",
+                border: "1px solid rgba(255,255,255, 0.18)",
+                boxShadow: "0 8px 32px rgba(26,26,26, 0.08)"
+              }}
+            >
               <div className="flex gap-1 mb-2">
                 {[...Array(5)].map((_, j) => (
                   <Star key={j} className="w-3 h-3 fill-current" style={{ color: C.kohlGold }} />
                 ))}
               </div>
-              <p className="font-bm text-sm mb-1.5" style={{ color: C.papyrus }}>
+              <p className="font-bm text-sm mb-1.5" style={{ color: C.white }}>
                 &ldquo;{u.quote}&rdquo;
               </p>
-              <p className="text-[11px] uppercase tracking-widest" style={{ color: C.clayEarth }}>
+              <p className="text-[11px] uppercase tracking-widest" style={{ color: C.white, opacity: 0.8 }}>
                 {u.name} / {u.product}
               </p>
             </div>
@@ -193,9 +201,10 @@ export function Footer({ TRUST }: { TRUST: { icon: React.ElementType; label: str
                   key={t.label}
                   className="flex items-center gap-1 text-[10px] px-2.5 py-1 rounded-full"
                   style={{
-                    color: C.stone,
-                    background: "rgba(255,255,255,0.03)",
-                    border: "1px solid rgba(255,255,255,0.06)",
+                    color: C.papyrus,
+                    background: "rgba(227, 239, 245, 0.15)",
+                    backdropFilter: "blur(16px)",
+                    border: "1px solid rgba(255,255,255,0.1)",
                   }}
                 >
                   <Icon className="w-2.5 h-2.5" />
